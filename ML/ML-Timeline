@@ -1,0 +1,40 @@
+Phase 1: Data & Foundation 
+Objective: Prepare the data and set up the development environment.
+
+Task	Description	Output
+1.1. Acquire & Explore Data	Obtain the synthetic dataset from Feishu Docs. Understand the columns, labels, and distributions.	A notebook with initial data analysis (EDA).
+1.2. Data Split	Split the data into Training (70%), Validation (15%), and Test (15%) sets.	train.csv, val.csv, test.csv
+1.3. Environment Setup	Create a requirements.txt file. Set up a Python virtual environment. Install core libraries: transformers, datasets, peft, accelerate, bitsandbytes, langchain, openai, streamlit.	A working Python environment ready for development.
+1.4. Model Selection	Decide on the primary Hugging Face model (e.g., Zephyr-7B-beta) and the fallback OpenAI model (gpt-3.5-turbo).	Decision documented in the project plan.
+
+Phase 2: Prototyping & Prompt Engineering 
+Objective: Validate the approach using OpenAI's API and design the effective prompt structure.
+
+Task	Description	Output
+2.1. Craft Initial Prompt	Design a clear instruction template for the LLM. Test it manually in the OpenAI Playground.	A well-defined prompt template.
+2.2. OpenAI Baseline Test	Write a simple script using langchain and openai to run the test set through gpt-3.5-turbo using the prompt. Analyze the accuracy. This sets a performance baseline.	A baseline accuracy score and a baseline_output.csv.
+2.3. Finalize Data Format	Format the training data into instruction-response pairs based on the successful prompt.	Finalized train.jsonl/val.jsonl for fine-tuning.
+
+Phase 3: Model Fine-Tuning 
+Objective: Create a specialized model by fine-tuning the chosen open-source model on our compliance data.
+
+Task	Description	Output
+3.1. Setup Training Script	Write a script using peft and trl to implement QLoRA fine-tuning. Configure parameters (LR, batch size, LoRA rank).	src/train.py
+3.2. Execute Fine-Tuning	Run the training script on a GPU-enabled machine (e.g., Colab Pro, AWS EC2). Monitor training and validation loss.	A set of trained adapter weights (./my-lora-model).
+3.3. Evaluate Fine-Tuned Model	Run inference on the validation set using the fine-tuned model. Compare performance against the OpenAI baseline.	Validation accuracy metrics for the fine-tuned model.
+
+Phase 4: System Integration & Automation 
+Objective: Build the robust inference pipeline with fallback logic and a user-friendly interface.
+
+Task	Description	Output
+4.1. Build Inference Pipeline	Write the core infer.py script using langchain. Implement the logic: First try fine-tuned model -> On fail/error -> Fallback to OpenAI.	Robust src/infer.py script.
+4.2. Create Demo Web App	Build a simple and intuitive UI using streamlit or gradio that calls the inference pipeline.	src/app.py
+4.3. Generate Test Output	Run the official test.csv set through the completed pipeline to generate the required output for submission.	output.csv
+
+Phase 5: Documentation & Finalization 
+Objective: Prepare all deliverables and document the project thoroughly.
+
+Task	Description	Output
+5.1. Record Demo Video	Script and record a <3-minute video. Show the app working for clear YES, NO, and AMBIGUOUS cases. Upload to YouTube.	Link to the public demo video.
+5.2. Prepare GitHub Repo	Structure the repository. Write a comprehensive README.md with setup instructions, project explanation, and usage examples. Push all code.	Link to the public GitHub repository.
+5.3. Final Review	Review all deliverables against the task requirements. Ensure the repo is easy to set up and run.	Final submission package.

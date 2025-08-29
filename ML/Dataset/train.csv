@@ -1,7 +1,7 @@
 feature_id,feature_name,feature_description
 1,Leaderboard system for weekly creators,Introduce a creator leaderboard updated weekly using internal analytics. Points and rankings are stored in FR metadata and tracked using IMT.
 2,Minor-safe chat expansion via Jellybean,"We're expanding chat features, but for users flagged by Jellybean certain functions (e.g. media sharing) will be limited. BB and ASL will monitor compliance posture."
-3,Longform posts with age-based moderation,Longform post creation is now open to all. However moderation for underage authors is stricter via Snowcap.
+3,Longform posts with age-based moderation,"Longform post creation is now open to all. However, moderation for underage authors is stricter via Snowcap."
 4,Creator fund payout tracking in CDS,Monetization events will be tracked through CDS to detect anomalies in creator payouts. DRT rules apply for log trimming.
 5,Jellybean-based parental notifications for Florida regulation,"To support Florida's Online Protections for Minors law this feature extends the Jellybean parental control framework. Notifications are dispatched to verified parent accounts when a minor attempts to access restricted features. Using IMT the system checks behavioral anomalies against BB models. If violations are detected restrictions are applied in ShadowMode with full audit logging through CDS. Glow flags ensure compliance visibility during rollout phases."
 6,User behavior scoring for policy gating,Behavioral scoring via Spanner will be used to gate access to certain tools. The feature tracks usage and adjusts gating based on BB divergence.
